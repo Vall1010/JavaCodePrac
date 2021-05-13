@@ -1,0 +1,164 @@
+import java.util.Scanner;
+
+public class BankMiniProj {
+
+	public static void main(String[] args) throws customException {
+
+		int sum;
+		int total;
+		int inputMain = 0;
+		int checkTotal;
+		int FinalTotal;
+
+		BankMiniProj input = new BankMiniProj();
+
+		try {
+
+			inputMain = input.doInput();
+
+			int inputFive = input.doSelectFive();
+			int amountOne = input.currentAmount(inputFive, inputMain);
+
+			int inputTen = input.doSelectTen();
+			int amountTwo = input.currentAmount(inputFive + inputTen, inputMain);
+
+			int inputTwenty = input.doSelectTwenty();
+			int amountThree = input.currentAmount(inputFive + inputTen + inputTwenty, inputMain);
+
+			int inputFifty = input.doSelectFifty();
+			int amountFour = input.currentAmount(inputFive + inputTen + inputTwenty + inputFifty, inputMain);
+
+			int inputHundred = input.doSelectHundred();
+			int amountFive = input.currentAmount(inputFive + inputTen + inputTwenty + inputFifty + inputHundred,
+					inputMain);
+
+			FinalTotal = inputFive + inputTen + inputTwenty + inputFifty + inputHundred;
+			checkTotal = input.doCheck(FinalTotal, inputMain);
+
+			if (FinalTotal > inputMain || FinalTotal < inputMain)
+				throw new customException("Invalid1");
+
+		} catch (customException eObj) {
+			System.out.println("The sum of the bills must be equal to the total requested amount of:" + inputMain);
+		}
+
+	}
+
+	public int doInput() throws customException {
+		int amount = 0;
+		Scanner objScan1 = new Scanner(System.in);
+
+		System.out.println("Welcome to our Bank App !! \n Please enter the amount you want to withdraw");
+		amount = objScan1.nextInt();
+
+		return amount;
+
+	}
+
+	public int doCheck(int x, int y) {
+
+		if (x == y) {
+
+			System.out.println("Please take your card and cash");
+			System.out.println("Thank you for banking with us");
+
+		} else {
+
+			System.out.println("Invalid amount!");
+		}
+		return 0;
+
+	}
+
+	public int currentAmount(int x, int y) {
+
+		System.out.println("running total of bills is: " + x);
+		System.out.println("total requested amount is: " + y);
+		return x;
+	}
+
+	public int doSelectFive() {
+
+		int a;
+		int product = 0;
+
+		try {
+			Scanner objScan1 = new Scanner(System.in);
+
+			int five = 5;
+			System.out.println("Please enter the number of 5 CAD bills: ");
+			a = objScan1.nextInt();
+			product = five * a;
+		} catch (Exception obj) {
+			System.out.println("Please enter the a valid number! ");
+		}
+
+		return product;
+
+	}
+
+	public int doSelectTen() {
+
+		int a;
+		int product = 0;
+
+		Scanner objScan1 = new Scanner(System.in);
+
+		int ten = 10;
+		System.out.println("Please enter the number of 10 CAD bills: ");
+		a = objScan1.nextInt();
+		product = ten * a;
+
+		return product;
+
+	}
+
+	public int doSelectTwenty() {
+
+		int a;
+		int product = 0;
+
+		Scanner objScan1 = new Scanner(System.in);
+
+		int twenty = 20;
+		System.out.println("Please enter the number of 20 CAD bills: ");
+		a = objScan1.nextInt();
+		product = twenty * a;
+
+		return product;
+
+	}
+
+	public int doSelectFifty() {
+
+		int a;
+		int product = 0;
+
+		Scanner objScan1 = new Scanner(System.in);
+
+		int fifty = 50;
+		System.out.println("Please enter the number of 50 CAD bills: ");
+		a = objScan1.nextInt();
+		product = fifty * a;
+
+		return product;
+
+	}
+
+	public int doSelectHundred() {
+
+		int a;
+		int product = 0;
+
+		Scanner objScan1 = new Scanner(System.in);
+
+		int hundred = 100;
+		System.out.println("Please enter the number of 100 CAD bills: ");
+		a = objScan1.nextInt();
+		product = hundred * a;
+
+		return product;
+
+	}
+
+}
